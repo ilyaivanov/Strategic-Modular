@@ -8,14 +8,8 @@
   },
   "author": "Ilya Ivanov <static.ila@gmail.com>",
   "license": "MIT",
-  "dependencies": {
-    "gulp": "^3.9.0",
-    "gulp-karma": "^0.0.4",
-    "karma": "^0.12.37"
-  },
   "devDependencies": {
     "gulp": "^3.9.0",
-    "gulp-istanbul": "^0.10.0",
     "gulp-karma": "0.0.4",
     "jasmine-core": "^2.3.4",
     "karma": "^0.12.37",

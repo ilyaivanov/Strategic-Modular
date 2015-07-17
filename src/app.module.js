@@ -1,1 +1,3 @@
-angular.module("app", ["app.common"]);
+angular.module("app", [
+    "app.common"
+]);

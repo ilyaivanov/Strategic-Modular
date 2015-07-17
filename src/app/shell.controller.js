@@ -1,7 +1,7 @@
-function ShellController() {
+function ShellController(surveys) {
     var shell = this;
 
-    shell.text = "hello world";
+    shell.surveys = surveys;
 }
 
 angular
