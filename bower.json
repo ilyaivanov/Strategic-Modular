@@ -1,0 +1,22 @@
+{
+  "name": "Strategic-Modular",
+  "version": "0.0.1",
+  "authors": [
+    "Ilya Ivanov <static.ila@gmail.com>"
+  ],
+  "description": "Yet another attempt to build maintainable app",
+  "main": "index.html",
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "angular-mocks": "~1.4.3",
+    "bootstrap": "~3.3.5",
+    "gulp": "~3.9.0"
+  }
+}
