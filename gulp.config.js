@@ -7,8 +7,8 @@ module.exports = function () {
     function getKarmaOptions() {
         return {
             files: [
-                "bower_components/angular/angular.js",
-                "bower_components/angular-mocks/angular-mocks.js",
+                "node_modules/angular/angular.js",
+                "node_modules/angular-mocks/angular-mocks.js",
                 "src/app.module.js",
                 "src/app/common.module.js",
                 "src/app/common/models.module.js",

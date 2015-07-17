@@ -15,5 +15,9 @@
     "karma": "^0.12.37",
     "karma-chrome-launcher": "^0.2.0",
     "karma-jasmine": "^0.3.6"
+  },
+  "dependencies": {
+    "angular": "^1.4.3",
+    "angular-mocks": "^1.4.3"
   }
 }
