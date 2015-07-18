@@ -10,5 +10,5 @@ function loadingScreen() {
 }
 
 angular
-    .module("app")
+    .module("app.common")
     .service('loadingScreen', loadingScreen);

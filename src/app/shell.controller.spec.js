@@ -57,18 +57,14 @@ describe('When shell is being created', function () {
     }
 
     function ignoreLoginTemplate() {
-        ignoreTemplate('app/login/login.html');
+        ignoreTemplate('src/app/login/login.html');
     }
 
     function ignoreCrosstabsTemplate() {
-        ignoreTemplate('app/crosstabs/crosstabs.html');
+        ignoreTemplate('src/app/crosstabs/crosstabs.html');
     }
 
-    function ignoreTemplate(key) {
-        inject(function ($templateCache) {
-            $templateCache.put(key, '');
-        });
-    }
+
 
     function expectLoadingScreenToBeHidden() {
         expect(loadingScreen.hide).toHaveBeenCalled();

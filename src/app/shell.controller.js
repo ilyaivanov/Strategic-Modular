@@ -7,13 +7,15 @@ function ShellController($state, $log, login, loadingScreen) {
         .then(function (result) {
             if (result.isUserLoggedIn) {
                 loadingScreen.hide();
-                $log.info("user is logged in");
+                $log.info("user is already logged in ("+result.userName+") redirecting to crosstabs");
+
                 $state.go("crosstabs");
             }
             else {
                 loadingScreen.hide();
                 $state.go("login");
-                $log.log("user is not logged in");
+                $log.log("user is not logged in, redirecting to login");
+
             }
         });
 }

@@ -3,3 +3,9 @@ function spyOnStubMethod(o, methodName){
         o[methodName] = function(){};
     return spyOn(o, methodName);
 }
+
+function ignoreTemplate(key) {
+    inject(function ($templateCache) {
+        $templateCache.put(key, '');
+    });
+}

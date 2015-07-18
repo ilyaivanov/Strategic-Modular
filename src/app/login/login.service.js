@@ -6,6 +6,14 @@ function login($http, $timeout) {
                 return res.data;
             });
     }
+
+    this.login = function (loginModel) {
+        return $http
+            .post('/api/Account', loginModel)
+            .then(function (res) {
+                return res.data;
+            });
+    }
 }
 
 
