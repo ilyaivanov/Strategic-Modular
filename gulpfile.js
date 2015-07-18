@@ -10,7 +10,7 @@ gulp.task('default', ['inject'], function () {
 });
 
 
-gulp.task('inject', ['test'], function () {
+gulp.task('inject', function () {
     log('Wire up the bower css, js and our app css, js into the html');
 
     return gulp
