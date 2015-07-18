@@ -4,8 +4,8 @@
   "description": "Yet another attempt to build maintainable app",
   "main": "gulp.config.js",
   "scripts": {
-    "test": "node_modules/.bin/gulp",
-    "bower": "bower install"
+    "postinstall": "bower install",
+    "test": "node_modules/.bin/gulp"
   },
   "author": "Ilya Ivanov <static.ila@gmail.com>",
   "license": "MIT",
