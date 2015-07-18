@@ -1,12 +1,22 @@
 //feature flags
 
 
-//LOGIN
+//TODO: ugly, but no other way to sync tests are fake state loading
+var isUnderUnitTests = !!window.jasmine;
+if (!isUnderUnitTests) {
 
-const LOAD_FAKE_LOGIN = true;
-const IS_USER_ALREADY_LOGGED_IN = false; //assumes previous is true
-const FAKE_USER_NAME = "fake";
-const FAKE_PASSWORD = "112";
+
+
+    //LOGIN
+    const LOAD_FAKE_LOGIN = true;
+    const IS_USER_ALREADY_LOGGED_IN = false; //assumes previous is true
+    const FAKE_USER_NAME = "fake";
+    const FAKE_PASSWORD = "112";
+
+
+
+
+}
 
 
 
