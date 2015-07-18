@@ -39,7 +39,7 @@ describe('On a login page', function () {
             beforeEach(function () {
                 end.when('POST', '/api/Account', loginModel)
                     .respond({isSuccessful: true});
-                ignoreTemplate("src/app/crosstabs/crosstabs.html");
+                ignoreCrosstabsTemplate();
                 end.flush();
             });
             it("spinning button should be hidden", function () {

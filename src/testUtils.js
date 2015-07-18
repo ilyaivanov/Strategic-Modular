@@ -1,11 +1,20 @@
-function spyOnStubMethod(o, methodName){
-    if(o[methodName] === undefined)
-        o[methodName] = function(){};
+function spyOnStubMethod(o, methodName) {
+    if (o[methodName] === undefined)
+        o[methodName] = function () {
+        };
     return spyOn(o, methodName);
 }
 
-function ignoreTemplate(key) {
-    inject(function ($templateCache) {
-        $templateCache.put(key, '');
+function ignoreLoginTemplate() {
+    ignoreTemplate('login');
+}
+
+function ignoreCrosstabsTemplate() {
+    ignoreTemplate('crosstabs');
+}
+
+function ignoreTemplate(itemName) {
+    inject(function ($templateCache, templates) {
+        $templateCache.put(templates[itemName], '');
     });
 }

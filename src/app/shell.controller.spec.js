@@ -2,12 +2,11 @@ describe('When shell is being created', function () {
 
     var end;
     var state;
-
     var loadingScreen;
 
     beforeEach(module('app'));
 
-    beforeEach(function() {
+    beforeEach(function () {
         loadingScreen = {};
         spyOnStubMethod(loadingScreen, 'show');
         spyOnStubMethod(loadingScreen, 'hide');
@@ -55,16 +54,6 @@ describe('When shell is being created', function () {
         end.when('GET', '/api/Account')
             .respond({isUserLoggedIn: userLoggedIn});
     }
-
-    function ignoreLoginTemplate() {
-        ignoreTemplate('src/app/login/login.html');
-    }
-
-    function ignoreCrosstabsTemplate() {
-        ignoreTemplate('src/app/crosstabs/crosstabs.html');
-    }
-
-
 
     function expectLoadingScreenToBeHidden() {
         expect(loadingScreen.hide).toHaveBeenCalled();

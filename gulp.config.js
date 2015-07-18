@@ -5,7 +5,8 @@ module.exports = function () {
             "src/app/common.module.js",
             "src/app/common/models.module.js",
             "src/app/**/*.js",
-            "!src/app/**/*spec.js"
+            "!src/app/**/*spec.js",
+            "!src/testUtils.js"
         ],
         css: ['src/css/*.css'],
         index: 'src/main.html',

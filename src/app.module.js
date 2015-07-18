@@ -3,7 +3,7 @@
 
 //LOGIN
 
-LOAD_FAKE_LOGIN = false;
+const LOAD_FAKE_LOGIN = true;
 const IS_USER_ALREADY_LOGGED_IN = false; //assumes previous is true
 const FAKE_USER_NAME = "fake";
 const FAKE_PASSWORD = "112";
@@ -16,16 +16,21 @@ var app = angular.module('app', [
     'app.login'
 ]);
 
+var base = 'src/app/';
+app.constant("templates", {
+    login: base + 'login/login.html',
+    crosstabs: base + 'crosstabs/crosstabs.html'
+});
 
-app.config(function ($stateProvider) {
+app.config(function ($stateProvider, templates) {
     $stateProvider
         .state('login', {
             url: '/login',
-            templateUrl: 'src/app/login/login.html',
+            templateUrl: templates.login,
             controller:"LoginController",
             controllerAs:"login"
         }).state('crosstabs', {
             url: '/crosstabs',
-            templateUrl: 'src/app/crosstabs/crosstabs.html'
+            templateUrl: templates.crosstabs
         });
 });
