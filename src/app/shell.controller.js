@@ -1,23 +1,43 @@
-function ShellController($state, $log, login, loadingScreen) {
+function ShellController($state, $log, login, $timeout, loadingScreen, stateMediator, surveys) {
     var shell = this;
 
-    loadingScreen.show();
+    shell.surveys = surveys;
 
-    login.isUserLoggedIn()
+    shell.onSurveyChange = function () {
+        loadingScreen.show("Loading survey: " + shell.selectedSurvey.name);
+        $timeout(loadingScreen.hide, 1000);
+    };
+
+
+    //initialization
+    loadingScreen.show("Strategic Window is loading");
+    login
+        .isUserLoggedIn()
         .then(function (result) {
-            if (result.isUserLoggedIn) {
-                loadingScreen.hide();
-                $log.info("user is already logged in ("+result.userName+") redirecting to crosstabs");
-
-                $state.go("crosstabs");
-            }
-            else {
-                loadingScreen.hide();
-                $state.go("login");
-                $log.log("user is not logged in, redirecting to login");
-
-            }
+            if (result.isUserLoggedIn)
+                handleUserIsLoggedIn(result);
+            else
+                handleUserIsNotLoggedIn();
         });
+
+    function handleUserIsLoggedIn(result) {
+        $log.info("user is already logged in (" + result.userName + "). Loading initial state.");
+
+        stateMediator
+            .loadInitialState()
+            .then(function () {
+                shell.selectedSurvey = surveys.items[0];
+                shell.onSurveyChange();
+                $log.info("Initial state have been loaded. Redirecting to Crosstabs");
+                $state.go("crosstabs");
+            });
+    }
+
+    function handleUserIsNotLoggedIn() {
+        loadingScreen.hide();
+        $state.go("login");
+        $log.log("user is not logged in, redirecting to login");
+    }
 }
 
 angular

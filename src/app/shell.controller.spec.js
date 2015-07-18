@@ -2,24 +2,29 @@ describe('When shell is being created', function () {
 
     var end;
     var state;
-    var loadingScreen;
-
+    var loadingScreenMock;
+    var mediatorMock;
     beforeEach(module('app'));
 
-    beforeEach(function () {
-        loadingScreen = {};
-        spyOnStubMethod(loadingScreen, 'show');
-        spyOnStubMethod(loadingScreen, 'hide');
-    });
+    beforeEach(inject(function ($q) {
+        loadingScreenMock = {
+            show: jasmine.createSpy(),
+            hide: jasmine.createSpy()
+        };
+
+        mediatorMock = {
+            loadInitialState: jasmine.createSpy().and.returnValue($q.defer().promise)
+        };
+    }));
 
     beforeEach(inject(function ($controller, $httpBackend, $state) {
         end = $httpBackend;
         state = $state;
-        $controller('ShellController', {loadingScreen: loadingScreen});
+        $controller('ShellController', {loadingScreen: loadingScreenMock, stateMediator: mediatorMock});
     }));
 
     it('loading screen should be shown', function () {
-        expect(loadingScreen.show).toHaveBeenCalled();
+        expect(loadingScreenMock.show).toHaveBeenCalled();
     });
 
     describe('if user is not logged in', function () {
@@ -43,11 +48,8 @@ describe('When shell is being created', function () {
             end.flush();
         });
 
-        it('loading screen should be hidden',
-            expectLoadingScreenToBeHidden);
-
-        it('he should be redirected to crosstabs page', function () {
-            expect(state.current.name).toBe('crosstabs');
+        it("GetInitialState should be called", function () {
+            expect(mediatorMock.loadInitialState).toHaveBeenCalled();
         });
     });
     function expectAccountServiceToRespondWith(userLoggedIn) {
@@ -55,7 +57,8 @@ describe('When shell is being created', function () {
             .respond({isUserLoggedIn: userLoggedIn});
     }
 
+
     function expectLoadingScreenToBeHidden() {
-        expect(loadingScreen.hide).toHaveBeenCalled();
+        expect(loadingScreenMock.hide).toHaveBeenCalled();
     }
 });

@@ -1,8 +1,8 @@
 <nav class="navbar navbar-default">
     <div class="container-fluid">
-        <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                    data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
                 <span class="sr-only">Toggle navigation</span>
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
@@ -15,17 +15,17 @@
             <form class="navbar-form navbar-left" role="search">
                 <div class="form-group">
                     <label for="surveySelect">Survey</label>
-                    <select class="form-control" name="" id="surveySelect">
-                        <option value="">Survey 1</option>
-                        <option value="">Survey 2</option>
-                        <option value="">Survey 3</option>
+                    <select class="form-control"
+                            id="surveySelect"
+                            ng-model="shell.selectedSurvey"
+                            ng-change="shell.onSurveyChange()"
+                            ng-options="survey.name for survey in shell.surveys.items">
+                        <option value="" ng-repeat="survey in shell.surveys.items">{{survey.name}}</option>
                     </select>
-
                 </div>
             </form>
-
-        </div><!-- /.navbar-collapse -->
-    </div><!-- /.container-fluid -->
+        </div>
+    </div>
 </nav>
 
 <div class="container-fluid" ui-view></div>

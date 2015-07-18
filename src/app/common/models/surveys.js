@@ -1,7 +1,5 @@
 function surveys() {
-    var shell = this;
-
-    shell.text = "hello world";
+    var surveys = this;
 }
 
 angular

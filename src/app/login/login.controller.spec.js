@@ -5,9 +5,10 @@ describe('On a login page', function () {
     var loadingScreen;
     var state;
     beforeEach(function() {
-        loadingScreen = {};
-        spyOnStubMethod(loadingScreen, 'show');
-        spyOnStubMethod(loadingScreen, 'hide');
+        loadingScreen = {
+            show: jasmine.createSpy(),
+            hide: jasmine.createSpy()
+        };
     });
 
     beforeEach(module('app'));

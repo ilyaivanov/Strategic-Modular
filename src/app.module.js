@@ -6,12 +6,16 @@ var isUnderUnitTests = !!window.jasmine;
 if (!isUnderUnitTests) {
 
 
+    //COMMON
+    const LOAD_FAKE_INITIAL = true;
+
 
     //LOGIN
     const LOAD_FAKE_LOGIN = true;
     const IS_USER_ALREADY_LOGGED_IN = true; //assumes previous is true
     const FAKE_USER_NAME = "fake";
     const FAKE_PASSWORD = "112";
+
 
 
 }
