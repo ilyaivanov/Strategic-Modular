@@ -13,7 +13,8 @@ describe('When shell is being created', function () {
         };
 
         mediatorMock = {
-            loadInitialState: jasmine.createSpy().and.returnValue($q.defer().promise)
+            loadInitialState: jasmine.createSpy().and.returnValue($q.defer().promise),
+            setOnInitialStateLoaded: jasmine.createSpy()
         };
     }));
 

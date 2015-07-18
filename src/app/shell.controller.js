@@ -5,12 +5,17 @@ function ShellController($state, $log, login, $timeout, loadingScreen, stateMedi
 
     shell.onSurveyChange = function () {
         loadingScreen.show("Loading survey: " + shell.selectedSurvey.name);
+        //TODO: load survey specific
         $timeout(loadingScreen.hide, 1000);
     };
 
 
+    stateMediator
+        .setOnInitialStateLoaded(onInitialStateLoaded);
+
     //initialization
     loadingScreen.show("Strategic Window is loading");
+
     login
         .isUserLoggedIn()
         .then(function (result) {
@@ -22,15 +27,14 @@ function ShellController($state, $log, login, $timeout, loadingScreen, stateMedi
 
     function handleUserIsLoggedIn(result) {
         $log.info("user is already logged in (" + result.userName + "). Loading initial state.");
+        stateMediator.loadInitialState();
+    }
 
-        stateMediator
-            .loadInitialState()
-            .then(function () {
-                shell.selectedSurvey = surveys.items[0];
-                shell.onSurveyChange();
-                $log.info("Initial state have been loaded. Redirecting to Crosstabs");
-                $state.go("crosstabs");
-            });
+    function onInitialStateLoaded() {
+        shell.selectedSurvey = surveys.items[0];
+        shell.onSurveyChange();
+        $log.info("Initial state have been loaded. Setting Survey: " + shell.selectedSurvey.name + ". Redirecting to Crosstabs");
+        $state.go("crosstabs");
     }
 
     function handleUserIsNotLoggedIn() {

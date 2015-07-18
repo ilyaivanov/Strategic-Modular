@@ -1,4 +1,4 @@
-function LoginController(login, loadingScreen, $state) {
+function LoginController(login, stateMediator) {
     var loginController = this;
 
     loginController.login = function () {
@@ -8,11 +8,7 @@ function LoginController(login, loadingScreen, $state) {
             .then(function (response) {
                 loginController.isLoggingIn = false;
                 if (response.isSuccessful)
-                {
-                    //TODO: extract
-                    //loadingScreen.show();
-                    $state.go("crosstabs");
-                }
+                    stateMediator.loadInitialState();
                 else
                     loginController.errorMessage = "Invalid username of password";
             })

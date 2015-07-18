@@ -4,11 +4,17 @@ describe('On a login page', function () {
     var login;
     var loadingScreen;
     var state;
-    beforeEach(function() {
+    var dummyMediator = {
+        loadInitialState: function () {
+
+        }
+    };
+    beforeEach(function () {
         loadingScreen = {
             show: jasmine.createSpy(),
             hide: jasmine.createSpy()
         };
+
     });
 
     beforeEach(module('app'));
@@ -16,9 +22,9 @@ describe('On a login page', function () {
     beforeEach(inject(function ($controller, $httpBackend, $state) {
         end = $httpBackend;
         state = $state;
-        login = $controller('LoginController', {loadingScreen: loadingScreen});
+        login = $controller('LoginController', {loadingScreen: loadingScreen, stateMediator: dummyMediator}
+        );
     }));
-
 
 
     describe('if user enters valid userName, password and clicks login', function () {
@@ -47,16 +53,10 @@ describe('On a login page', function () {
                 expect(login.isLoggingIn).toBe(false);
 
             });
-            xit("loading screen should be shown", function () {
-                expect(loadingScreen.show).toHaveBeenCalled();
-            });
-            it("no error message should be shown", function(){
+            it("no error message should be shown", function () {
                 expect(login.errorMessage).toBeFalsy();
             });
-            it("should be redirected to crosstabs", function(){
-                expect(state.current.name).toBe("crosstabs");
 
-            });
         });
     });
 
@@ -78,13 +78,11 @@ describe('On a login page', function () {
                 expect(login.isLoggingIn).toBe(false);
 
             });
-            it("loading screen should not be shown", function () {
-                expect(loadingScreen.show).not.toHaveBeenCalled();
-            });
 
-            it("an error message should be shown", function(){
+            it("an error message should be shown", function () {
                 expect(login.errorMessage).toBe("Invalid username of password");
             });
         });
     });
-});
+})
+;
