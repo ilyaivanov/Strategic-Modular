@@ -4,11 +4,13 @@
   "description": "Yet another attempt to build maintainable app",
   "main": "gulp.config.js",
   "scripts": {
-    "test": "node_modules/.bin/gulp"
+    "test": "node_modules/.bin/gulp",
+    "bower": "bower install"
   },
   "author": "Ilya Ivanov <static.ila@gmail.com>",
   "license": "MIT",
   "devDependencies": {
+    "bower": "^1.4.1",
     "gulp": "^3.9.0",
     "gulp-karma": "0.0.4",
     "jasmine-core": "^2.3.4",
@@ -20,7 +22,6 @@
     "angular": "^1.4.3",
     "angular-bootstrap": "^0.12.0",
     "angular-mocks": "^1.4.3",
-    "jquery": "^2.1.4",
     "ui-router": "0.0.1"
   }
 }

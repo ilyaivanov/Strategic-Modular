@@ -1,0 +1,26 @@
+{
+  "name": "Strategic-Modular",
+  "version": "0.0.1",
+  "description": "Yet another attempt to build maintainable app",
+  "homepage": "https://github.com/ilyaivanov/Strategic-Modular",
+  "authors": [
+    "Ilya Ivanov <static.ila@gmail.com>"
+  ],
+  "main": "index.html",
+  "keywords": [
+    "angular",
+    "angularjs",
+    "module"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.4"
+  }
+}
