@@ -1,4 +1,4 @@
-function stateMediator($http, surveys) {
+function stateMediator($http, $log, surveys, questionCategories, crosstabs) {
     var self = this;
 
     this.setOnInitialStateLoaded = function (callback) {
@@ -10,11 +10,20 @@ function stateMediator($http, surveys) {
             .then(function (response) {
                 var data = response.data;
                 surveys.items = data.surveys;
-
                 if (self.callback)
                     self.callback();
             })
     };
+
+    this.loadStateForSurvey = function (survey) {
+        return $http.get("/api/GetStateForSurvey?surveyName=" + survey.name)
+            .then(function (response) {
+                $log.info("Loaded state for survey " + survey.name + ". ");
+                var data = response.data;
+                questionCategories.items = data.categories;
+                crosstabs.items = data.crosstabs;
+            });
+    }
 }
 
 angular

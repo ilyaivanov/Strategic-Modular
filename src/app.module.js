@@ -17,14 +17,14 @@ if (!isUnderUnitTests) {
     const FAKE_PASSWORD = "112";
 
 
-
 }
 
 
 var app = angular.module('app', [
     'ui.router',
     'app.common',
-    'app.login'
+    'app.login',
+    'app.crosstabs'
 ]);
 
 var base = 'src/app/';
@@ -47,6 +47,8 @@ app.config(function ($stateProvider, templates) {
         }).state('crosstabs', {
             url: '/crosstabs',
             parent: "header",
-            templateUrl: templates.crosstabs
+            templateUrl: templates.crosstabs,
+            controller: "CrosstabsController",
+            controllerAs: "crosstabs"
         });
 });

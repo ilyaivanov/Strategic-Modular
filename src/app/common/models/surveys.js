@@ -1,5 +1,4 @@
 function surveys() {
-    var surveys = this;
 }
 
 angular

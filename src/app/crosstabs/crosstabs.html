@@ -1,1 +1,45 @@
-crosstabs
+<div>
+    <div class="col-lg-12">
+        <h1>My Crosstabs</h1>
+    </div>
+
+    <div class="col-lg-12">
+        <form action="" class="form-inline">
+            Search: <input class="form-control" type="text" ng-model="crosstabs.searchCrosstab"/>
+            <a href="#/createCrosstab" style="margin-left: 20px">
+        <span style="padding-left: 10px;">
+            <i>New</i>
+        </span>
+            </a>
+        </form>
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th style="width: 30%">Name</th>
+                <th style="width: 10%">Author</th>
+                <th></th>
+            </tr>
+
+            </thead>
+            <tbody>
+            <tr ng-repeat="crosstab in crosstabs.crosstabs.items | filter:crosstabs.searchCrosstab">
+                <td>
+                    {{crosstab.name}}
+                </td>
+                <td>
+                    {{crosstab.author}}
+                </td>
+                <td>
+                    <div>
+                        <a href="#" ng-click="vm.showCrosstab(crosstab)" style="padding-left: 10px">Run</a>
+                        <!--<a href="#" style="padding-left: 10px">Edit</a>-->
+                        <!--<a href="#" style="padding-left: 10px">Clone</a>-->
+                        <!--<a href="#" style="padding-left: 10px">Delete</a>-->
+                        <!--<a href="#" style="padding-left: 10px">(Un)share</a>-->
+                    </div>
+                </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

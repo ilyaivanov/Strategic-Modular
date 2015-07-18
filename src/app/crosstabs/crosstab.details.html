@@ -1,0 +1,45 @@
+<div class="sidebar">
+    <div class="panel-group" id="accordion" aria-multiselectable="true">
+        <div class="input-group custom-search-form">
+            <input type="text" class="form-control" ng-model="search.questionSearchText"
+                   placeholder="Search question...">
+                                <span class="input-group-btn">
+                                <button class="btn btn-default" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+        </div>
+        <br/>
+        <ul class="list-group">
+            <li class="list-group-item question">
+                Vehicles<br/>
+            </li>
+        </ul>
+
+        <div class="panel panel-default">
+            <div class="panel-heading categoryItem" role="tab" id="heading{{$index}}">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" data-parent="#accordion" data-target="#collapse{{$index}}"
+                       aria-expanded="false"
+                       aria-controls="collapseOne" class="collapsed">
+                        Category
+                    </a>
+                </h4>
+            </div>
+            <div id="collapse{{$index}}" class="panel-collapse collapse" aria-labelledby="heading{{$index}}"
+                 aria-expanded="false" style="height: 0px;">
+                <ul class="list-group">
+                    <li class="list-group-item question">
+                        Question1
+                    </li>
+                    <li class="list-group-item question">
+                        Question2
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="main">
+    <h1>Crosstabs</h1>
+</div>

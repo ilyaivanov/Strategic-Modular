@@ -2,13 +2,7 @@ function ShellController($state, $log, login, $timeout, loadingScreen, stateMedi
     var shell = this;
 
     shell.surveys = surveys;
-
-    shell.onSurveyChange = function () {
-        loadingScreen.show("Loading survey: " + shell.selectedSurvey.name);
-        //TODO: load survey specific
-        $timeout(loadingScreen.hide, 1000);
-    };
-
+    shell.onSurveyChange = onSurveyChange;
 
     stateMediator
         .setOnInitialStateLoaded(onInitialStateLoaded);
@@ -32,10 +26,20 @@ function ShellController($state, $log, login, $timeout, loadingScreen, stateMedi
 
     function onInitialStateLoaded() {
         shell.selectedSurvey = surveys.items[0];
-        shell.onSurveyChange();
+        onSurveyChange();
         $log.info("Initial state have been loaded. Setting Survey: " + shell.selectedSurvey.name + ". Redirecting to Crosstabs");
         $state.go("crosstabs");
     }
+
+    function onSurveyChange() {
+        loadingScreen.show("Loading survey: " + shell.selectedSurvey.name);
+
+        stateMediator
+            .loadStateForSurvey(shell.selectedSurvey)
+            .then(function () {
+                loadingScreen.hide();
+            });
+    };
 
     function handleUserIsNotLoggedIn() {
         loadingScreen.hide();
