@@ -5,7 +5,7 @@
   "main": "gulp.config.js",
   "scripts": {
     "postinstall": "bower install",
-    "test": "node_modules/.bin/gulp"
+    "test": "node_modules/.bin/gulp test"
   },
   "author": "Ilya Ivanov <static.ila@gmail.com>",
   "license": "MIT",

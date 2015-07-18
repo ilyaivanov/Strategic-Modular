@@ -10,6 +10,7 @@ function ignoreLoginTemplate() {
 }
 
 function ignoreCrosstabsTemplate() {
+    ignoreTemplate('header');
     ignoreTemplate('crosstabs');
 }
 
