@@ -5,11 +5,21 @@
 
     <div class="col-lg-12">
         <form action="" class="form-inline">
+            <div class="form-group">
+                <label for="surveySelect">Survey</label>
+                <select class="form-control"
+                        id="surveySelect"
+                        ng-model="shell.selectedSurvey"
+                        ng-change="shell.onSurveyChange()"
+                        ng-options="survey.name for survey in shell.surveys.items">
+                    <option value="" ng-repeat="survey in shell.surveys.items">{{survey.name}}</option>
+                </select>
+            </div>
             Search: <input class="form-control" type="text" ng-model="crosstabs.searchCrosstab"/>
-            <a href="#/createCrosstab" style="margin-left: 20px">
-        <span style="padding-left: 10px;">
-            <i>New</i>
-        </span>
+            <a ui-sref="createCrosstab" style="margin-left: 20px">
+            <span style="padding-left: 10px;">
+                <i>New</i>
+            </span>
             </a>
         </form>
         <table class="table table-hover">

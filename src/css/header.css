@@ -1,6 +1,6 @@
 .sidebar {
     position: fixed;
-    top: 51px;
+    top: 52px;
     bottom: 0;
     left: 0;
     z-index: 1000;
@@ -20,13 +20,6 @@
     padding-right: 40px;
     padding-left: 40px;
 }
-.sidebar {
-    width: 250px;
-}
-.main {
-    padding-left: 250px;
-}
-
 
 
 .panel-title{

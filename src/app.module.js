@@ -32,7 +32,8 @@ app.constant("templates", {
     header: base + 'header.html',
 
     login: base + 'login/login.html',
-    crosstabs: base + 'crosstabs/crosstabs.html'
+    crosstabs: base + 'crosstabs/crosstabs.html',
+    crosstabDetails: base + 'crosstabs/crosstab.details.html'
 });
 
 app.config(function ($stateProvider, templates) {
@@ -42,13 +43,22 @@ app.config(function ($stateProvider, templates) {
             templateUrl: templates.login,
             controller: "LoginController",
             controllerAs: "login"
-        }).state('header', {
+        })
+        .state('header', {
             templateUrl: templates.header
-        }).state('crosstabs', {
+        })
+        .state('crosstabs', {
             url: '/crosstabs',
             parent: "header",
             templateUrl: templates.crosstabs,
             controller: "CrosstabsController",
             controllerAs: "crosstabs"
+        })
+        .state('createCrosstab', {
+            url: '/createCrosstab',
+            parent: "header",
+            templateUrl: templates.crosstabDetails,
+            controller: "CreateCrosstabController",
+            controllerAs: "crosstab"
         });
 });
